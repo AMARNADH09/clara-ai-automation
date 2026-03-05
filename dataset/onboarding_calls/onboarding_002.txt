@@ -1,0 +1,39 @@
+ONBOARDING CALL TRANSCRIPT - Account 002
+Company: Brightline Electrical Services
+Date: 2024-02-02
+
+Onboarding Rep: Let's lock in your Clara config. Business hours — Monday through Friday, 8 AM to 6 PM Mountain?
+
+Client: Correct.
+
+Onboarding Rep: Emergency routing — on-call tech at 602-555-0174, then Daniel at 602-555-0198. Correct?
+
+Client: The on-call number changed. It's now 602-555-0183. And yes, Daniel is still the backup.
+
+Onboarding Rep: Updated. What timeout before escalating to Daniel?
+
+Client: 30 seconds.
+
+Onboarding Rep: Fallback message if both fail?
+
+Client: Tell them: "Our on-call team is currently assisting another emergency. Someone will call you back within 20 minutes. Please keep your line available."
+
+Onboarding Rep: Any update to emergency definitions?
+
+Client: Add generator failure to the list. We've been getting those calls.
+
+Onboarding Rep: Added. Non-emergency after hours — collect name, number, issue, follow up next morning. Any changes?
+
+Client: Also ask what their preferred callback time is. Morning or afternoon. That helps us plan the day.
+
+Onboarding Rep: Good addition. Software — no ticket creation. Any changes?
+
+Client: No changes there.
+
+Onboarding Rep: Address — 4401 N 32nd Street, Phoenix, AZ 85018. Confirmed?
+
+Client: Confirmed.
+
+Onboarding Rep: Anything else?
+
+Client: Clara should identify herself as a virtual assistant from Brightline at the start of every call.

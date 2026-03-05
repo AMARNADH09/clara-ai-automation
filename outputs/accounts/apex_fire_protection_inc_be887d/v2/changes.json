@@ -1,0 +1,81 @@
+{
+  "account_id": "apex_fire_protection_inc_be887d",
+  "company_name": "Apex Fire Protection Inc.",
+  "changelog_generated_at": "2026-03-04T20:22:59.360722Z",
+  "from_version": "v1",
+  "to_version": "v2",
+  "total_changes": 10,
+  "changes": [
+    {
+      "field": "business_hours.days",
+      "action": "added",
+      "value": "Saturday",
+      "reason": "Onboarding call confirmed addition of Saturday."
+    },
+    {
+      "field": "business_hours.saturday_hours",
+      "action": "added",
+      "value": {
+        "start": "8 AM",
+        "end": "12 PM"
+      },
+      "reason": "Onboarding confirmed Saturday-specific hours."
+    },
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "saturday 8 am to noon as well",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "saturday 8 am to 12 pm central",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "carbon monoxide detector alarm",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_routing_rules.transfer_timeout_seconds",
+      "action": "updated",
+      "old_value": null,
+      "new_value": 45,
+      "reason": "Onboarding call specified transfer timeout duration."
+    },
+    {
+      "field": "emergency_routing_rules.fallback_if_no_answer",
+      "action": "updated",
+      "old_value": "Client: Then the caller should be told someone will call back within 15 minutes. We take emergencies very seriously.",
+      "new_value": "I wasn't able to reach our team directly, but this is our highest priority. Someone from Apex will call you back within 15 minutes. Please stay near your phone.",
+      "reason": "Onboarding call provided explicit fallback/transfer-fail message."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not automatically create inspection jobs in servicetrade",
+      "reason": "Onboarding call added new integration restriction."
+    },
+    {
+      "field": "office_address",
+      "action": "added",
+      "old_value": null,
+      "new_value": "0192 first",
+      "reason": "Onboarding call confirmed or provided office address."
+    },
+    {
+      "field": "notes",
+      "action": "appended",
+      "value": "Clara must confirm caller site address/location early in emergency calls.",
+      "reason": "Onboarding call provided special operational instructions."
+    }
+  ],
+  "resolved_unknowns": [
+    "Office address not provided.",
+    "Transfer timeout duration not specified."
+  ],
+  "remaining_unknowns": []
+}

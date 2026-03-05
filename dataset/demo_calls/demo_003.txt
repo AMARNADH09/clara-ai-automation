@@ -1,0 +1,35 @@
+DEMO CALL TRANSCRIPT - Account 003
+Company: Cascade Sprinkler Systems
+Date: 2024-01-17
+
+Sales Rep: Great to meet you. Tell me about Cascade.
+
+Client: We're a sprinkler contractor. We install, inspect, and repair fire sprinkler systems for commercial buildings. Based in Seattle, Washington.
+
+Sales Rep: What are your working hours?
+
+Client: We run Monday through Saturday, 7:30 AM to 4:30 PM Pacific time. Sundays we're closed.
+
+Sales Rep: What kind of emergency calls do you receive?
+
+Client: Mostly sprinkler activations or malfunctions. Sometimes a building owner calls because they see water coming from a sprinkler head and they're panicking. Those are priority calls.
+
+Sales Rep: How do you want Clara to handle those?
+
+Client: Emergency calls need to go to our lead technician on call. Right now that's Kevin at 206-555-0143. If he doesn't answer, try the office manager, Brenda, at 206-555-0165.
+
+Sales Rep: What's the fallback if no one answers?
+
+Client: Let the caller know help is coming and someone will reach them within 10 minutes. We're very responsive.
+
+Sales Rep: Non-emergency calls after hours?
+
+Client: Take a message. Get name, number, and what they need. We follow up the next day.
+
+Sales Rep: Do you use any software we should know about?
+
+Client: We use ServiceTrade. But we're very particular about job creation. Don't create jobs automatically, especially for sprinkler work. We have to assess first.
+
+Sales Rep: Understood. Any other constraints?
+
+Client: Not at this point. This looks promising.

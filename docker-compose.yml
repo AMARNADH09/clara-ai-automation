@@ -1,0 +1,47 @@
+version: "3.8"
+
+# ─────────────────────────────────────────────────────────────
+# Clara Answers — n8n Self-Hosted Automation Orchestrator
+#
+# Usage:
+#   docker-compose up -d
+#   Then open: http://localhost:5678
+#   Import: workflows/clara_pipeline_n8n.json
+#
+# Environment variables:
+#   Copy .env.example to .env and fill in values before running.
+# ─────────────────────────────────────────────────────────────
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: clara_n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Basic auth to protect the UI (change these!)
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_USER:-admin}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD:-clara_admin}
+      # Timezone (should match your client's timezone)
+      - GENERIC_TIMEZONE=${TIMEZONE:-America/New_York}
+      - TZ=${TIMEZONE:-America/New_York}
+      # n8n host config
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      # Disable telemetry
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+    volumes:
+      # Persist n8n data (workflows, credentials, execution history)
+      - n8n_data:/home/node/.n8n
+      # Mount the project directory so n8n can execute the pipeline scripts
+      - .:/data/clara-pipeline:ro
+    working_dir: /data/clara-pipeline
+
+volumes:
+  n8n_data:
+    driver: local

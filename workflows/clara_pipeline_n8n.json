@@ -1,0 +1,115 @@
+{
+  "name": "Clara Answers — Full Automation Pipeline",
+  "description": "Pipeline A (Demo → v1) and Pipeline B (Onboarding → v2) orchestrated via n8n",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "trigger_manual",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [100, 300],
+      "parameters": {}
+    },
+    {
+      "id": "read_demo_files",
+      "name": "Read Demo Transcripts",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "position": [300, 200],
+      "parameters": {
+        "fileSelector": "dataset/demo_calls/*.txt",
+        "options": {}
+      },
+      "notes": "Reads all demo call transcript files from the dataset folder."
+    },
+    {
+      "id": "pipeline_a_extract",
+      "name": "Pipeline A — Extract & Generate v1",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [500, 200],
+      "parameters": {
+        "command": "cd /path/to/clara-ai-automation && python scripts/run_pipeline.py --pipeline a",
+        "cwd": "/path/to/clara-ai-automation"
+      },
+      "notes": "Runs Pipeline A: extracts memo JSON and generates agent spec v1 for all demo transcripts."
+    },
+    {
+      "id": "read_onboarding_files",
+      "name": "Read Onboarding Transcripts",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "position": [300, 400],
+      "parameters": {
+        "fileSelector": "dataset/onboarding_calls/*.txt",
+        "options": {}
+      },
+      "notes": "Reads all onboarding call transcript files."
+    },
+    {
+      "id": "pipeline_b_update",
+      "name": "Pipeline B — Apply Onboarding & Generate v2",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [700, 300],
+      "parameters": {
+        "command": "cd /path/to/clara-ai-automation && python scripts/run_pipeline.py --pipeline b",
+        "cwd": "/path/to/clara-ai-automation"
+      },
+      "notes": "Runs Pipeline B: matches onboarding transcripts to v1 memos, applies patches, generates v2 outputs and changelogs."
+    },
+    {
+      "id": "read_summary",
+      "name": "Read Run Summary",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [900, 300],
+      "parameters": {
+        "filePath": "outputs/run_summary.json"
+      },
+      "notes": "Loads the run summary to inspect results."
+    },
+    {
+      "id": "notify_complete",
+      "name": "Log Completion",
+      "type": "n8n-nodes-base.noOp",
+      "position": [1100, 300],
+      "parameters": {},
+      "notes": "Workflow complete. Outputs are in outputs/accounts/<account_id>/v1 and v2. Changelogs in changelog/."
+    }
+  ],
+  "connections": {
+    "trigger_manual": {
+      "main": [
+        [
+          { "node": "read_demo_files", "type": "main", "index": 0 },
+          { "node": "read_onboarding_files", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "read_demo_files": {
+      "main": [
+        [{ "node": "pipeline_a_extract", "type": "main", "index": 0 }]
+      ]
+    },
+    "pipeline_a_extract": {
+      "main": [
+        [{ "node": "pipeline_b_update", "type": "main", "index": 0 }]
+      ]
+    },
+    "read_onboarding_files": {
+      "main": [
+        [{ "node": "pipeline_b_update", "type": "main", "index": 0 }]
+      ]
+    },
+    "pipeline_b_update": {
+      "main": [
+        [{ "node": "read_summary", "type": "main", "index": 0 }]
+      ]
+    },
+    "read_summary": {
+      "main": [
+        [{ "node": "notify_complete", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "notes": "Replace /path/to/clara-ai-automation with the actual absolute path on your machine. See README.md for full setup instructions."
+}

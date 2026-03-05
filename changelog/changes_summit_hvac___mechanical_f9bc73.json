@@ -1,0 +1,32 @@
+{
+  "account_id": "summit_hvac___mechanical_f9bc73",
+  "company_name": "Summit HVAC & Mechanical",
+  "changelog_generated_at": "2026-03-04T20:22:59.421108Z",
+  "from_version": "v1",
+  "to_version": "v2",
+  "total_changes": 3,
+  "changes": [
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "frozen pipe burst in a commercial building",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "boiler failure",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "notes",
+      "action": "appended",
+      "value": "Clara should mention 24/7 emergency availability during business hours greeting.",
+      "reason": "Onboarding call provided special operational instructions."
+    }
+  ],
+  "resolved_unknowns": [],
+  "remaining_unknowns": [
+    "Software integration constraints not confirmed."
+  ]
+}

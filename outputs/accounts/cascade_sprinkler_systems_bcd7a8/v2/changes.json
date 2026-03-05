@@ -1,0 +1,66 @@
+{
+  "account_id": "cascade_sprinkler_systems_bcd7a8",
+  "company_name": "Cascade Sprinkler Systems",
+  "changelog_generated_at": "2026-03-04T20:22:59.400798Z",
+  "from_version": "v1",
+  "to_version": "v2",
+  "total_changes": 8,
+  "changes": [
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "visible water damage from a ceiling caused by a sprinkler",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_routing_rules.contacts[Kevin].phone",
+      "action": "updated",
+      "old_value": "206-555-0165",
+      "new_value": "206-555-0143",
+      "reason": "Onboarding call updated phone number for Kevin."
+    },
+    {
+      "field": "emergency_routing_rules.transfer_timeout_seconds",
+      "action": "updated",
+      "old_value": null,
+      "new_value": 40,
+      "reason": "Onboarding call specified transfer timeout duration."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not automatically create jobs at all automatically in servicetrade",
+      "reason": "Onboarding call added new integration restriction."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not automatically create any jobs at all automatically in servicetrade",
+      "reason": "Onboarding call added new integration restriction."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not automatically create any jobs in any integrated system",
+      "reason": "Onboarding call specified blanket prohibition on automatic job creation."
+    },
+    {
+      "field": "office_address",
+      "action": "added",
+      "old_value": null,
+      "new_value": "0143 first",
+      "reason": "Onboarding call confirmed or provided office address."
+    },
+    {
+      "field": "notes",
+      "action": "appended",
+      "value": "Clara must clearly state the company name during the greeting.",
+      "reason": "Onboarding call provided special operational instructions."
+    }
+  ],
+  "resolved_unknowns": [
+    "Office address not provided.",
+    "Transfer timeout duration not specified."
+  ],
+  "remaining_unknowns": []
+}

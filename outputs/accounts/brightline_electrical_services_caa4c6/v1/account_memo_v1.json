@@ -1,0 +1,74 @@
+{
+  "account_id": "brightline_electrical_services_caa4c6",
+  "company_name": "Brightline Electrical Services",
+  "version": "v1",
+  "source": "demo_call",
+  "generated_at": "2026-03-04T20:22:59.320483Z",
+  "business_hours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "start": "8 AM",
+    "end": "6 PM",
+    "timezone": "America/Denver",
+    "raw_segments": []
+  },
+  "office_address": "4401 N 32nd Street",
+  "services_supported": [
+    "electrical",
+    "maintenance",
+    "install",
+    "repair"
+  ],
+  "emergency_definition": [
+    "smoke",
+    "power outage",
+    "electrical fire",
+    "live wiring",
+    "panel",
+    "hazard"
+  ],
+  "emergency_routing_rules": {
+    "contacts": [
+      {
+        "name": "Unknown",
+        "phone": "602-555-0174",
+        "role": "on_call_technician"
+      },
+      {
+        "name": "Unknown",
+        "phone": "602-555-0198",
+        "role": "operations_manager"
+      }
+    ],
+    "transfer_timeout_seconds": null,
+    "fallback_if_no_answer": "Client: Try our operations lead, Daniel, at 602-555-0198. If still no answer, collect info and tell the caller we'll call back within 20 minutes."
+  },
+  "non_emergency_routing_rules": {
+    "collect_fields": [
+      "name",
+      "phone_number",
+      "issue_description",
+      "site_address"
+    ],
+    "follow_up_timing": "next_morning"
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": null,
+    "retry_count": 1,
+    "fallback_action": "collect_info_and_promise_callback"
+  },
+  "integration_constraints": [
+    "Do not create any tickets or jobs in servicetrade"
+  ],
+  "after_hours_flow_summary": "Greet caller, confirm emergency status, collect name/phone/address if emergency, attempt transfer to on-call contact, fallback to callback promise if transfer fails; for non-emergency collect details and promise next-business-day follow-up.",
+  "office_hours_flow_summary": "Greet caller, ask purpose, collect name and phone number, route or transfer to appropriate team, fallback if transfer fails, confirm next steps, offer anything else, close call.",
+  "questions_or_unknowns": [
+    "Transfer timeout duration not specified."
+  ],
+  "notes": "Extracted from demo call transcript: demo_002.txt"
+}

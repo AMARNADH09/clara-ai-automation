@@ -1,0 +1,71 @@
+{
+  "account_id": "cascade_sprinkler_systems_bcd7a8",
+  "company_name": "Cascade Sprinkler Systems",
+  "version": "v2",
+  "source": "onboarding_call",
+  "generated_at": "2026-03-04T20:22:59.325153Z",
+  "business_hours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "start": "7:30 AM",
+    "end": "4:30 PM",
+    "timezone": "America/Los_Angeles",
+    "raw_segments": []
+  },
+  "office_address": "0143 first",
+  "services_supported": [
+    "sprinkler",
+    "install",
+    "repair"
+  ],
+  "emergency_definition": [
+    "sprinkler",
+    "visible water damage from a ceiling caused by a sprinkler"
+  ],
+  "emergency_routing_rules": {
+    "contacts": [
+      {
+        "name": "Kevin",
+        "phone": "206-555-0143",
+        "role": "operations_manager"
+      },
+      {
+        "name": "Kevin",
+        "phone": "206-555-0143",
+        "role": "operations_manager"
+      }
+    ],
+    "transfer_timeout_seconds": 40,
+    "fallback_if_no_answer": "Client: Let the caller know help is coming and someone will reach them within 10 minutes. We're very responsive."
+  },
+  "non_emergency_routing_rules": {
+    "collect_fields": [
+      "name",
+      "phone_number",
+      "issue_description"
+    ],
+    "follow_up_timing": "next_business_day"
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": 40,
+    "retry_count": 1,
+    "fallback_action": "collect_info_and_promise_callback"
+  },
+  "integration_constraints": [
+    "Do not automatically create jobs automatically in servicetrade",
+    "Do not automatically create jobs at all automatically in servicetrade",
+    "Do not automatically create any jobs at all automatically in servicetrade",
+    "Do not automatically create any jobs in any integrated system"
+  ],
+  "after_hours_flow_summary": "Greet caller, confirm emergency status, collect name/phone/address if emergency, attempt transfer to on-call contact, fallback to callback promise if transfer fails; for non-emergency collect details and promise next-business-day follow-up.",
+  "office_hours_flow_summary": "Greet caller, ask purpose, collect name and phone number, route or transfer to appropriate team, fallback if transfer fails, confirm next steps, offer anything else, close call.",
+  "questions_or_unknowns": [],
+  "notes": "Extracted from demo call transcript: demo_003.txt | ONBOARDING NOTES: Clara must clearly state the company name during the greeting.",
+  "updated_at": "2026-03-04T20:22:59.399293Z"
+}

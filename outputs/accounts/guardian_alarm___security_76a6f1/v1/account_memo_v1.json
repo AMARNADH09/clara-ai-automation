@@ -1,0 +1,72 @@
+{
+  "account_id": "guardian_alarm___security_76a6f1",
+  "company_name": "Guardian Alarm & Security",
+  "version": "v1",
+  "source": "demo_call",
+  "generated_at": "2026-03-04T20:22:59.334784Z",
+  "business_hours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "start": "8 AM",
+    "end": "5 PM",
+    "timezone": "America/New_York",
+    "raw_segments": []
+  },
+  "office_address": "550 Peachtree Street",
+  "services_supported": [
+    "fire alarm",
+    "alarm",
+    "install",
+    "monitoring",
+    "security"
+  ],
+  "emergency_definition": [
+    "fire alarm",
+    "burglar alarm",
+    "break-in",
+    "panic button"
+  ],
+  "emergency_routing_rules": {
+    "contacts": [
+      {
+        "name": "Unknown",
+        "phone": "404-555-0133",
+        "role": "after_hours_rep"
+      },
+      {
+        "name": "Unknown",
+        "phone": "404-555-0156",
+        "role": "operations_manager"
+      }
+    ],
+    "transfer_timeout_seconds": null,
+    "fallback_if_no_answer": "Client: Route to our operations manager, Thomas, at 404-555-0156. If still no answer, collect info and tell them we'll respond within 15 minutes."
+  },
+  "non_emergency_routing_rules": {
+    "collect_fields": [
+      "name",
+      "phone_number",
+      "site_address"
+    ],
+    "follow_up_timing": "next_business_day"
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": null,
+    "retry_count": 1,
+    "fallback_action": "collect_info_and_promise_callback"
+  },
+  "integration_constraints": [
+    "Do not automatically create tickets or jobs in servicetrade"
+  ],
+  "after_hours_flow_summary": "Greet caller, confirm emergency status, collect name/phone/address if emergency, attempt transfer to on-call contact, fallback to callback promise if transfer fails; for non-emergency collect details and promise next-business-day follow-up.",
+  "office_hours_flow_summary": "Greet caller, ask purpose, collect name and phone number, route or transfer to appropriate team, fallback if transfer fails, confirm next steps, offer anything else, close call.",
+  "questions_or_unknowns": [
+    "Transfer timeout duration not specified."
+  ],
+  "notes": "Extracted from demo call transcript: demo_005.txt"
+}

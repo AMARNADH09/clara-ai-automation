@@ -1,0 +1,56 @@
+{
+  "account_id": "brightline_electrical_services_caa4c6",
+  "company_name": "Brightline Electrical Services",
+  "changelog_generated_at": "2026-03-04T20:22:59.378443Z",
+  "from_version": "v1",
+  "to_version": "v2",
+  "total_changes": 6,
+  "changes": [
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "generator failure to the list",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_routing_rules.contacts",
+      "action": "added",
+      "value": {
+        "name": "Client",
+        "phone": "602-555-0183",
+        "role": "contact"
+      },
+      "reason": "Onboarding call introduced a new emergency contact."
+    },
+    {
+      "field": "emergency_routing_rules.transfer_timeout_seconds",
+      "action": "updated",
+      "old_value": null,
+      "new_value": 30,
+      "reason": "Onboarding call specified transfer timeout duration."
+    },
+    {
+      "field": "emergency_routing_rules.fallback_if_no_answer",
+      "action": "updated",
+      "old_value": "Client: Try our operations lead, Daniel, at 602-555-0198. If still no answer, collect info and tell the caller we'll call back within 20 minutes.",
+      "new_value": "Our on-call team is currently assisting another emergency. Someone will call you back within 20 minutes. Please keep your line available.",
+      "reason": "Onboarding call provided explicit fallback/transfer-fail message."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not create any tickets or jobs in software",
+      "reason": "Onboarding call added new integration restriction."
+    },
+    {
+      "field": "notes",
+      "action": "appended",
+      "value": "Clara must identify herself as a virtual assistant from the company at the start of every call. | Ask non-emergency callers their preferred callback time (morning or afternoon).",
+      "reason": "Onboarding call provided special operational instructions."
+    }
+  ],
+  "resolved_unknowns": [
+    "Transfer timeout duration not specified."
+  ],
+  "remaining_unknowns": []
+}

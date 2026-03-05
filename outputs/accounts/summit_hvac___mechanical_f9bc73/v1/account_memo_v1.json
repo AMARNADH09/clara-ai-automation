@@ -1,0 +1,65 @@
+{
+  "account_id": "summit_hvac___mechanical_f9bc73",
+  "company_name": "Summit HVAC & Mechanical",
+  "version": "v1",
+  "source": "demo_call",
+  "generated_at": "2026-03-04T20:22:59.330171Z",
+  "business_hours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "start": "8 AM",
+    "end": "5 PM",
+    "timezone": "America/Denver",
+    "raw_segments": []
+  },
+  "office_address": "2200 Blake Street",
+  "services_supported": [
+    "hvac",
+    "heating",
+    "mechanical",
+    "plumbing",
+    "maintenance",
+    "install"
+  ],
+  "emergency_definition": [
+    "system failure",
+    "refrigeration failure"
+  ],
+  "emergency_routing_rules": {
+    "contacts": [
+      {
+        "name": "Unknown",
+        "phone": "303-555-0177",
+        "role": "dispatcher"
+      }
+    ],
+    "transfer_timeout_seconds": 30,
+    "fallback_if_no_answer": null
+  },
+  "non_emergency_routing_rules": {
+    "collect_fields": [
+      "name",
+      "phone_number",
+      "issue_description",
+      "site_address"
+    ],
+    "follow_up_timing": "next_business_day"
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": 30,
+    "retry_count": 1,
+    "fallback_action": "collect_info_and_promise_callback"
+  },
+  "integration_constraints": [],
+  "after_hours_flow_summary": "Greet caller, confirm emergency status, collect name/phone/address if emergency, attempt transfer to on-call contact, fallback to callback promise if transfer fails; for non-emergency collect details and promise next-business-day follow-up.",
+  "office_hours_flow_summary": "Greet caller, ask purpose, collect name and phone number, route or transfer to appropriate team, fallback if transfer fails, confirm next steps, offer anything else, close call.",
+  "questions_or_unknowns": [
+    "Software integration constraints not confirmed."
+  ],
+  "notes": "Extracted from demo call transcript: demo_004.txt"
+}

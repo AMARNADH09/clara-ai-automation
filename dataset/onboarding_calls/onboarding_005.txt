@@ -1,0 +1,35 @@
+ONBOARDING CALL TRANSCRIPT - Account 005
+Company: Guardian Alarm & Security
+Date: 2024-02-05
+
+Onboarding Rep: Let's finalize Guardian's setup. Hours Monday through Friday, 8 AM to 5 PM Eastern?
+
+Client: Correct.
+
+Onboarding Rep: Emergency routing — Janet at 404-555-0133, then Thomas at 404-555-0156, fallback is collect info with 15-minute callback promise. Still correct?
+
+Client: Yes, but we want a 35-second timeout before going to Thomas.
+
+Onboarding Rep: Got it. Any new emergency definitions?
+
+Client: Add: "customer reports smoke smell near alarm panel." That's an emergency for us.
+
+Onboarding Rep: Added. Non-emergency after hours?
+
+Client: Same — take a message, follow up next business day. No changes.
+
+Onboarding Rep: No ServiceTrade, no ticket creation. Any changes?
+
+Client: No changes.
+
+Onboarding Rep: Address — 550 Peachtree Street NE, Atlanta, GA 30308. Confirmed?
+
+Client: Confirmed.
+
+Onboarding Rep: Any other requirements?
+
+Client: Two things. First, Clara should never tell a caller that their alarm signal has been received or dispatched unless we explicitly confirm that. Second, for non-emergency calls during business hours, Clara should offer to connect the caller directly to our customer service team at 404-555-0100.
+
+Onboarding Rep: Both noted. Anything else?
+
+Client: That's it.

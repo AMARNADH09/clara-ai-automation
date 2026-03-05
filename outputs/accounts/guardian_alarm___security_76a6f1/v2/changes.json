@@ -1,0 +1,39 @@
+{
+  "account_id": "guardian_alarm___security_76a6f1",
+  "company_name": "Guardian Alarm & Security",
+  "changelog_generated_at": "2026-03-04T20:22:59.440932Z",
+  "from_version": "v1",
+  "to_version": "v2",
+  "total_changes": 4,
+  "changes": [
+    {
+      "field": "emergency_definition",
+      "action": "added",
+      "value": "customer reports smoke smell near alarm panel",
+      "reason": "Onboarding call expanded emergency triggers."
+    },
+    {
+      "field": "emergency_routing_rules.transfer_timeout_seconds",
+      "action": "updated",
+      "old_value": null,
+      "new_value": 35,
+      "reason": "Onboarding call specified transfer timeout duration."
+    },
+    {
+      "field": "integration_constraints",
+      "action": "added",
+      "value": "Do not create any tickets or jobs in servicetrade",
+      "reason": "Onboarding call added new integration restriction."
+    },
+    {
+      "field": "notes",
+      "action": "appended",
+      "value": "Clara must never confirm alarm receipt or dispatch to callers. | For non-emergency calls during business hours, offer to connect to customer service team.",
+      "reason": "Onboarding call provided special operational instructions."
+    }
+  ],
+  "resolved_unknowns": [
+    "Transfer timeout duration not specified."
+  ],
+  "remaining_unknowns": []
+}

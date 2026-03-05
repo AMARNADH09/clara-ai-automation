@@ -1,0 +1,154 @@
+2026-03-04 20:18:42 [INFO] Clara Answers Pipeline — started at 2026-03-04T20:18:42.606442+00:00
+2026-03-04 20:18:42 [INFO] Log file: /home/claude/clara-ai-automation/outputs/logs/pipeline_20260304_201842.log
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO] PIPELINE A — Demo Call Extraction
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: demo_001.txt
+2026-03-04 20:18:42 [INFO]   Account ID : apex_fire_protection_inc_be887d
+2026-03-04 20:18:42 [INFO]   Company    : Apex Fire Protection Inc.
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/apex_fire_protection_inc_be887d/v1/account_memo_v1.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/apex_fire_protection_inc_be887d/v1/agent_spec_v1.json
+2026-03-04 20:18:42 [WARNING]   Unknowns flagged (2):
+2026-03-04 20:18:42 [WARNING]     ⚠  Office address not provided.
+2026-03-04 20:18:42 [WARNING]     ⚠  Transfer timeout duration not specified.
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: demo_002.txt
+2026-03-04 20:18:42 [INFO]   Account ID : brightline_electrical_services_caa4c6
+2026-03-04 20:18:42 [INFO]   Company    : Brightline Electrical Services
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/brightline_electrical_services_caa4c6/v1/account_memo_v1.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/brightline_electrical_services_caa4c6/v1/agent_spec_v1.json
+2026-03-04 20:18:42 [WARNING]   Unknowns flagged (1):
+2026-03-04 20:18:42 [WARNING]     ⚠  Transfer timeout duration not specified.
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: demo_003.txt
+2026-03-04 20:18:42 [INFO]   Account ID : cascade_sprinkler_systems_bcd7a8
+2026-03-04 20:18:42 [INFO]   Company    : Cascade Sprinkler Systems
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/cascade_sprinkler_systems_bcd7a8/v1/account_memo_v1.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/cascade_sprinkler_systems_bcd7a8/v1/agent_spec_v1.json
+2026-03-04 20:18:42 [WARNING]   Unknowns flagged (2):
+2026-03-04 20:18:42 [WARNING]     ⚠  Office address not provided.
+2026-03-04 20:18:42 [WARNING]     ⚠  Transfer timeout duration not specified.
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: demo_004.txt
+2026-03-04 20:18:42 [INFO]   Account ID : summit_hvac___mechanical_f9bc73
+2026-03-04 20:18:42 [INFO]   Company    : Summit HVAC & Mechanical
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/summit_hvac___mechanical_f9bc73/v1/account_memo_v1.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/summit_hvac___mechanical_f9bc73/v1/agent_spec_v1.json
+2026-03-04 20:18:42 [WARNING]   Unknowns flagged (1):
+2026-03-04 20:18:42 [WARNING]     ⚠  Software integration constraints not confirmed.
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: demo_005.txt
+2026-03-04 20:18:42 [INFO]   Account ID : guardian_alarm___security_76a6f1
+2026-03-04 20:18:42 [INFO]   Company    : Guardian Alarm & Security
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/guardian_alarm___security_76a6f1/v1/account_memo_v1.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/guardian_alarm___security_76a6f1/v1/agent_spec_v1.json
+2026-03-04 20:18:42 [WARNING]   Unknowns flagged (1):
+2026-03-04 20:18:42 [WARNING]     ⚠  Transfer timeout duration not specified.
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+Pipeline A complete. Processed: 5, Errors: 0
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO] PIPELINE B — Onboarding Update Processing
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: onboarding_001.txt
+2026-03-04 20:18:42 [INFO]   Account ID : apex_fire_protection_inc_be887d
+2026-03-04 20:18:42 [INFO]   Company    : Apex Fire Protection Inc.
+2026-03-04 20:18:42 [INFO]   Changes detected: 10
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] business_hours.days
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] business_hours.saturday_hours
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.transfer_timeout_seconds
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.fallback_if_no_answer
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] office_address
+2026-03-04 20:18:42 [INFO]     📝 [APPENDED] notes
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/apex_fire_protection_inc_be887d/v2/account_memo_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/apex_fire_protection_inc_be887d/v2/agent_spec_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/apex_fire_protection_inc_be887d/v2/changes.json
+2026-03-04 20:18:42 [INFO]   Saved → changelog/changes_apex_fire_protection_inc_be887d.json
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.01s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: onboarding_002.txt
+2026-03-04 20:18:42 [INFO]   Account ID : brightline_electrical_services_caa4c6
+2026-03-04 20:18:42 [INFO]   Company    : Brightline Electrical Services
+2026-03-04 20:18:42 [INFO]   Changes detected: 6
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_routing_rules.contacts
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.transfer_timeout_seconds
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.fallback_if_no_answer
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     📝 [APPENDED] notes
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/brightline_electrical_services_caa4c6/v2/account_memo_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/brightline_electrical_services_caa4c6/v2/agent_spec_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/brightline_electrical_services_caa4c6/v2/changes.json
+2026-03-04 20:18:42 [INFO]   Saved → changelog/changes_brightline_electrical_services_caa4c6.json
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.01s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: onboarding_003.txt
+2026-03-04 20:18:42 [INFO]   Account ID : cascade_sprinkler_systems_bcd7a8
+2026-03-04 20:18:42 [INFO]   Company    : Cascade Sprinkler Systems
+2026-03-04 20:18:42 [INFO]   Changes detected: 8
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.contacts[Kevin].phone
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.transfer_timeout_seconds
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] office_address
+2026-03-04 20:18:42 [INFO]     📝 [APPENDED] notes
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/cascade_sprinkler_systems_bcd7a8/v2/account_memo_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/cascade_sprinkler_systems_bcd7a8/v2/agent_spec_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/cascade_sprinkler_systems_bcd7a8/v2/changes.json
+2026-03-04 20:18:42 [INFO]   Saved → changelog/changes_cascade_sprinkler_systems_bcd7a8.json
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: onboarding_004.txt
+2026-03-04 20:18:42 [INFO]   Account ID : summit_hvac___mechanical_f9bc73
+2026-03-04 20:18:42 [INFO]   Company    : Summit HVAC & Mechanical
+2026-03-04 20:18:42 [INFO]   Changes detected: 3
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     📝 [APPENDED] notes
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/summit_hvac___mechanical_f9bc73/v2/account_memo_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/summit_hvac___mechanical_f9bc73/v2/agent_spec_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/summit_hvac___mechanical_f9bc73/v2/changes.json
+2026-03-04 20:18:42 [INFO]   Saved → changelog/changes_summit_hvac___mechanical_f9bc73.json
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+▶ Processing: onboarding_005.txt
+2026-03-04 20:18:42 [INFO]   Account ID : guardian_alarm___security_76a6f1
+2026-03-04 20:18:42 [INFO]   Company    : Guardian Alarm & Security
+2026-03-04 20:18:42 [INFO]   Changes detected: 4
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] emergency_definition
+2026-03-04 20:18:42 [INFO]     ✏️ [UPDATED] emergency_routing_rules.transfer_timeout_seconds
+2026-03-04 20:18:42 [INFO]     ➕ [ADDED] integration_constraints
+2026-03-04 20:18:42 [INFO]     📝 [APPENDED] notes
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/guardian_alarm___security_76a6f1/v2/account_memo_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/guardian_alarm___security_76a6f1/v2/agent_spec_v2.json
+2026-03-04 20:18:42 [INFO]   Saved → outputs/accounts/guardian_alarm___security_76a6f1/v2/changes.json
+2026-03-04 20:18:42 [INFO]   Saved → changelog/changes_guardian_alarm___security_76a6f1.json
+2026-03-04 20:18:42 [INFO]   ✅ Done in 0.0s
+2026-03-04 20:18:42 [INFO] 
+Pipeline B complete. Processed: 5, Errors: 0
+2026-03-04 20:18:42 [INFO] 
+Run summary → outputs/run_summary.json
+2026-03-04 20:18:42 [INFO] 
+============================================================
+2026-03-04 20:18:42 [INFO]   BATCH RUN SUMMARY
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO]   Pipeline A : 5 processed  |  0 failed
+2026-03-04 20:18:42 [INFO]   Pipeline B : 5 updated    |  0 failed
+2026-03-04 20:18:42 [INFO]   Changes    : 31 total applied
+2026-03-04 20:18:42 [INFO]   Unknowns   : 6 resolved  |  1 remaining
+2026-03-04 20:18:42 [INFO]   Success    : 100.0%
+2026-03-04 20:18:42 [INFO] ============================================================
+2026-03-04 20:18:42 [INFO] 
+✅ Pipeline run complete.

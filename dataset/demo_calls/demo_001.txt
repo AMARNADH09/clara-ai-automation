@@ -1,0 +1,47 @@
+DEMO CALL TRANSCRIPT - Account 001
+Company: Apex Fire Protection Inc.
+Date: 2024-01-15
+
+Sales Rep: Hi, thanks for joining the demo today. Can you tell me a bit about your business?
+
+Client: Sure. We're Apex Fire Protection. We handle fire suppression systems, sprinkler installs, and annual inspections. We're based in Dallas, Texas.
+
+Sales Rep: How many calls do you typically get a day?
+
+Client: During business hours we get maybe 30 to 40 calls. Evenings and weekends it drops but we still get emergency calls. Mostly sprinkler leaks or fire alarm activations.
+
+Sales Rep: What are your business hours?
+
+Client: We're open Monday through Friday, 7 AM to 5 PM Central time. We're closed on weekends.
+
+Sales Rep: And how do you currently handle after-hours emergencies?
+
+Client: Right now we have an on-call technician. The main number goes to voicemail after hours and customers have to leave a message, which is a problem because emergencies can't wait.
+
+Sales Rep: What counts as an emergency for you?
+
+Client: Anything active. A sprinkler head going off, a fire alarm triggered, smoke, a system failure that creates a life safety risk. Those need an immediate response.
+
+Sales Rep: Do you use any field service software?
+
+Client: Yes, we use ServiceTrade. All jobs get logged there.
+
+Sales Rep: Who would Clara transfer emergency calls to?
+
+Client: Our dispatcher. His name is Mike. The number is 214-555-0192. If Mike doesn't answer, it goes to our operations manager, Sarah, at 214-555-0210.
+
+Sales Rep: What if both don't answer?
+
+Client: Then the caller should be told someone will call back within 15 minutes. We take emergencies very seriously.
+
+Sales Rep: And non-emergency calls after hours?
+
+Client: Collect their name, number, and what they need. We'll call them back next business day.
+
+Sales Rep: Any specific rules about ServiceTrade?
+
+Client: Don't create sprinkler jobs automatically. We handle those manually because they require site verification first.
+
+Sales Rep: Got it. Anything else I should know?
+
+Client: Not right now. This all sounds great.

@@ -1,0 +1,10 @@
+# Clara Answers Automation Pipeline
+# Zero-cost: uses Python standard library only.
+# No external packages required.
+# Python 3.11+ recommended.
+
+# To verify your Python version:
+#   python --version
+#
+# To run:
+#   python scripts/run_pipeline.py

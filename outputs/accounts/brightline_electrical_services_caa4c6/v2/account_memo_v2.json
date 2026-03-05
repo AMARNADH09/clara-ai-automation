@@ -1,0 +1,80 @@
+{
+  "account_id": "brightline_electrical_services_caa4c6",
+  "company_name": "Brightline Electrical Services",
+  "version": "v2",
+  "source": "onboarding_call",
+  "generated_at": "2026-03-04T20:22:59.320483Z",
+  "business_hours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "start": "8 AM",
+    "end": "6 PM",
+    "timezone": "America/Denver",
+    "raw_segments": []
+  },
+  "office_address": "4401 N 32nd Street",
+  "services_supported": [
+    "electrical",
+    "maintenance",
+    "install",
+    "repair"
+  ],
+  "emergency_definition": [
+    "smoke",
+    "power outage",
+    "electrical fire",
+    "live wiring",
+    "panel",
+    "hazard",
+    "generator failure to the list"
+  ],
+  "emergency_routing_rules": {
+    "contacts": [
+      {
+        "name": "Unknown",
+        "phone": "602-555-0174",
+        "role": "on_call_technician"
+      },
+      {
+        "name": "Unknown",
+        "phone": "602-555-0198",
+        "role": "operations_manager"
+      },
+      {
+        "name": "Client",
+        "phone": "602-555-0183",
+        "role": "contact"
+      }
+    ],
+    "transfer_timeout_seconds": 30,
+    "fallback_if_no_answer": "Our on-call team is currently assisting another emergency. Someone will call you back within 20 minutes. Please keep your line available."
+  },
+  "non_emergency_routing_rules": {
+    "collect_fields": [
+      "name",
+      "phone_number",
+      "issue_description",
+      "site_address"
+    ],
+    "follow_up_timing": "next_morning"
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": 30,
+    "retry_count": 1,
+    "fallback_action": "collect_info_and_promise_callback"
+  },
+  "integration_constraints": [
+    "Do not create any tickets or jobs in servicetrade",
+    "Do not create any tickets or jobs in software"
+  ],
+  "after_hours_flow_summary": "Greet caller, confirm emergency status, collect name/phone/address if emergency, attempt transfer to on-call contact, fallback to callback promise if transfer fails; for non-emergency collect details and promise next-business-day follow-up.",
+  "office_hours_flow_summary": "Greet caller, ask purpose, collect name and phone number, route or transfer to appropriate team, fallback if transfer fails, confirm next steps, offer anything else, close call.",
+  "questions_or_unknowns": [],
+  "notes": "Extracted from demo call transcript: demo_002.txt | ONBOARDING NOTES: Clara must identify herself as a virtual assistant from the company at the start of every call. | Ask non-emergency callers their preferred callback time (morning or afternoon).",
+  "updated_at": "2026-03-04T20:22:59.374974Z"
+}

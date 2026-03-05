@@ -1,0 +1,43 @@
+DEMO CALL TRANSCRIPT - Account 002
+Company: Brightline Electrical Services
+Date: 2024-01-16
+
+Sales Rep: Thanks for hopping on. Can you describe your company?
+
+Client: We're Brightline Electrical. Commercial and industrial electrical contractor based in Phoenix, Arizona. We do new installs, maintenance, and emergency electrical repairs.
+
+Sales Rep: What does your call volume look like?
+
+Client: Pretty steady. Maybe 20 to 25 calls per day. A good chunk are scheduling requests but we get emergency calls too, especially from commercial clients when power goes out or there's a hazard.
+
+Sales Rep: What are your office hours?
+
+Client: Monday through Friday, 8 AM to 6 PM, Mountain Time. We're closed on weekends but we do have 24/7 emergency coverage.
+
+Sales Rep: What qualifies as an emergency for you?
+
+Client: Power outages affecting a business, electrical fires or smoke from panels, exposed live wiring, any situation that's a safety hazard or causing major downtime for a commercial customer.
+
+Sales Rep: How do you handle routing today?
+
+Client: It's manual. Our receptionist answers during the day and routes calls. After hours goes to a cell phone that rotates weekly between senior techs.
+
+Sales Rep: Who should Clara transfer emergency calls to?
+
+Client: The on-call tech. But the number rotates, so we'd need to update that weekly. For now, assume the number is 602-555-0174.
+
+Sales Rep: And if the on-call tech doesn't pick up?
+
+Client: Try our operations lead, Daniel, at 602-555-0198. If still no answer, collect info and tell the caller we'll call back within 20 minutes.
+
+Sales Rep: Non-emergency after hours?
+
+Client: Collect name, number, description of the issue. Follow up next morning.
+
+Sales Rep: Do you use any software?
+
+Client: We use a custom CRM. No ServiceTrade. We'd want Clara to avoid creating any tickets. We'll handle that internally.
+
+Sales Rep: Anything else you want Clara to know?
+
+Client: Our main office is at 4401 N 32nd Street, Phoenix, AZ 85018. If they ask for location, Clara can share that.

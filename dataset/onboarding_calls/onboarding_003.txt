@@ -1,0 +1,31 @@
+ONBOARDING CALL TRANSCRIPT - Account 003
+Company: Cascade Sprinkler Systems
+Date: 2024-02-03
+
+Onboarding Rep: Let's confirm your configuration. Hours: Monday through Saturday, 7:30 AM to 4:30 PM Pacific?
+
+Client: Yes, that's right.
+
+Onboarding Rep: Emergency routing — Kevin at 206-555-0143 first, then Brenda at 206-555-0165. Fallback is 10-minute callback promise?
+
+Client: Correct. Timeout before escalating to Brenda should be 40 seconds.
+
+Onboarding Rep: Got it. Any new emergency triggers?
+
+Client: Add: "visible water damage from a ceiling caused by a sprinkler." We want that treated as emergency even if the sprinkler isn't actively going off.
+
+Onboarding Rep: Added. Non-emergency after hours?
+
+Client: Same as before. Take a message.
+
+Onboarding Rep: ServiceTrade — no automatic job creation for sprinkler work. Any additions?
+
+Client: Actually, do not create any jobs at all automatically. Not just sprinkler. We want full manual control.
+
+Onboarding Rep: Noted. Office address?
+
+Client: 3201 Airport Way S, Seattle, WA 98134.
+
+Onboarding Rep: Any other updates?
+
+Client: Yes. When Clara greets callers, she should say the name "Cascade Sprinkler" clearly. We've had complaints that automated systems sound generic.

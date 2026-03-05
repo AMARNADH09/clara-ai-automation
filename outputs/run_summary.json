@@ -1,0 +1,172 @@
+{
+  "run_timestamp": "2026-03-04T20:22:59.447191+00:00",
+  "log_file": "outputs\\logs\\pipeline_20260304_202259.log",
+  "pipeline_a": {
+    "accounts_processed": 5,
+    "accounts_failed": 0,
+    "failed_files": [],
+    "account_ids": [
+      "apex_fire_protection_inc_be887d",
+      "brightline_electrical_services_caa4c6",
+      "cascade_sprinkler_systems_bcd7a8",
+      "summit_hvac___mechanical_f9bc73",
+      "guardian_alarm___security_76a6f1"
+    ],
+    "total_emergency_contacts_extracted": 9,
+    "total_emergency_triggers_extracted": 19,
+    "per_file": [
+      {
+        "account_id": "apex_fire_protection_inc_be887d",
+        "company_name": "Apex Fire Protection Inc.",
+        "unknowns_count": 2,
+        "services_count": 8,
+        "emergency_triggers_count": 6,
+        "contacts_count": 2,
+        "status": "success",
+        "elapsed_seconds": 0.01,
+        "file": "demo_001.txt"
+      },
+      {
+        "account_id": "brightline_electrical_services_caa4c6",
+        "company_name": "Brightline Electrical Services",
+        "unknowns_count": 1,
+        "services_count": 4,
+        "emergency_triggers_count": 6,
+        "contacts_count": 2,
+        "status": "success",
+        "elapsed_seconds": 0.0,
+        "file": "demo_002.txt"
+      },
+      {
+        "account_id": "cascade_sprinkler_systems_bcd7a8",
+        "company_name": "Cascade Sprinkler Systems",
+        "unknowns_count": 2,
+        "services_count": 3,
+        "emergency_triggers_count": 1,
+        "contacts_count": 2,
+        "status": "success",
+        "elapsed_seconds": 0.01,
+        "file": "demo_003.txt"
+      },
+      {
+        "account_id": "summit_hvac___mechanical_f9bc73",
+        "company_name": "Summit HVAC & Mechanical",
+        "unknowns_count": 1,
+        "services_count": 6,
+        "emergency_triggers_count": 2,
+        "contacts_count": 1,
+        "status": "success",
+        "elapsed_seconds": 0.0,
+        "file": "demo_004.txt"
+      },
+      {
+        "account_id": "guardian_alarm___security_76a6f1",
+        "company_name": "Guardian Alarm & Security",
+        "unknowns_count": 1,
+        "services_count": 5,
+        "emergency_triggers_count": 4,
+        "contacts_count": 2,
+        "status": "success",
+        "elapsed_seconds": 0.0,
+        "file": "demo_005.txt"
+      }
+    ]
+  },
+  "pipeline_b": {
+    "accounts_updated": 5,
+    "accounts_failed": 0,
+    "failed_files": [],
+    "account_ids": [
+      "apex_fire_protection_inc_be887d",
+      "brightline_electrical_services_caa4c6",
+      "cascade_sprinkler_systems_bcd7a8",
+      "summit_hvac___mechanical_f9bc73",
+      "guardian_alarm___security_76a6f1"
+    ],
+    "total_changes_applied": 31,
+    "total_unknowns_resolved": 6,
+    "total_unknowns_remaining": 1,
+    "per_file": [
+      {
+        "account_id": "apex_fire_protection_inc_be887d",
+        "company_name": "Apex Fire Protection Inc.",
+        "changes_count": 10,
+        "resolved_unknowns": 2,
+        "remaining_unknowns": 0,
+        "change_types": [
+          "added",
+          "updated",
+          "appended"
+        ],
+        "status": "success",
+        "elapsed_seconds": 0.03,
+        "file": "onboarding_001.txt"
+      },
+      {
+        "account_id": "brightline_electrical_services_caa4c6",
+        "company_name": "Brightline Electrical Services",
+        "changes_count": 6,
+        "resolved_unknowns": 1,
+        "remaining_unknowns": 0,
+        "change_types": [
+          "added",
+          "updated",
+          "appended"
+        ],
+        "status": "success",
+        "elapsed_seconds": 0.02,
+        "file": "onboarding_002.txt"
+      },
+      {
+        "account_id": "cascade_sprinkler_systems_bcd7a8",
+        "company_name": "Cascade Sprinkler Systems",
+        "changes_count": 8,
+        "resolved_unknowns": 2,
+        "remaining_unknowns": 0,
+        "change_types": [
+          "added",
+          "updated",
+          "appended"
+        ],
+        "status": "success",
+        "elapsed_seconds": 0.02,
+        "file": "onboarding_003.txt"
+      },
+      {
+        "account_id": "summit_hvac___mechanical_f9bc73",
+        "company_name": "Summit HVAC & Mechanical",
+        "changes_count": 3,
+        "resolved_unknowns": 0,
+        "remaining_unknowns": 1,
+        "change_types": [
+          "added",
+          "appended"
+        ],
+        "status": "success",
+        "elapsed_seconds": 0.02,
+        "file": "onboarding_004.txt"
+      },
+      {
+        "account_id": "guardian_alarm___security_76a6f1",
+        "company_name": "Guardian Alarm & Security",
+        "changes_count": 4,
+        "resolved_unknowns": 1,
+        "remaining_unknowns": 0,
+        "change_types": [
+          "added",
+          "updated",
+          "appended"
+        ],
+        "status": "success",
+        "elapsed_seconds": 0.02,
+        "file": "onboarding_005.txt"
+      }
+    ]
+  },
+  "totals": {
+    "accounts_in_system": 5,
+    "fully_onboarded": 5,
+    "awaiting_onboarding": 0,
+    "pipeline_success_rate_pct": 100.0
+  }
+}

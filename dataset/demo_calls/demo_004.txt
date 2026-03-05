@@ -1,0 +1,35 @@
+DEMO CALL TRANSCRIPT - Account 004
+Company: Summit HVAC & Mechanical
+Date: 2024-01-18
+
+Sales Rep: Thanks for your time. What does Summit do?
+
+Client: We're an HVAC contractor. Commercial HVAC maintenance, installs, and emergency service. We're based in Denver, Colorado.
+
+Sales Rep: What hours do you operate?
+
+Client: Standard hours are Monday through Friday, 8 AM to 5 PM Mountain Time. We have 24/7 emergency service as well.
+
+Sales Rep: What would be an emergency call for HVAC?
+
+Client: A heating system failure in winter, a full AC failure for a server room or medical facility, refrigeration failure for a restaurant. Basically anything where downtime causes a major business impact or safety issue.
+
+Sales Rep: How should emergency routing work?
+
+Client: Call goes to our dispatch center first. Number is 303-555-0177. If no answer within 30 seconds, route to the on-call tech. We'll provide that number during onboarding.
+
+Sales Rep: Non-emergency after hours?
+
+Client: Collect name, number, and issue description. We call back next day.
+
+Sales Rep: Do you use any service management software?
+
+Client: Yes, we use ServiceTrade. And we're fine with jobs being created for HVAC work. Just not for plumbing if that ever comes up. We don't do plumbing.
+
+Sales Rep: Anything else I should note?
+
+Client: Our address is 2200 Blake Street, Denver, CO 80205. That's our main office.
+
+Sales Rep: Anything else?
+
+Client: The on-call tech number isn't finalized yet. We'll confirm in onboarding.

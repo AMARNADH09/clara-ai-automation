@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Clara Answers — Pipeline Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3350;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --red: #ff5c6e;
+    --yellow: #ffd76d;
+    --green: #4ade80;
+    --text: #e2e8f0;
+    --muted: #8892a4;
+    --added: #166534;
+    --added-bg: #052e16;
+    --updated: #1e3a5f;
+    --updated-bg: #0c1e35;
+    --removed: #7f1d1d;
+    --removed-bg: #2d0707;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; }
+
+  /* ── Layout ── */
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; gap: 16px; }
+  .topbar h1 { font-size: 18px; font-weight: 700; color: var(--text); }
+  .topbar span { color: var(--muted); font-size: 13px; }
+  .badge { background: var(--accent); color: #fff; border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+  .main { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - 57px); }
+  .sidebar { background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; }
+  .content { overflow-y: auto; padding: 24px; }
+
+  /* ── Sidebar ── */
+  .sidebar-title { padding: 14px 16px 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .account-item { padding: 10px 16px; cursor: pointer; border-left: 3px solid transparent; transition: all .15s; }
+  .account-item:hover { background: var(--surface2); }
+  .account-item.active { border-left-color: var(--accent); background: var(--surface2); }
+  .account-item .name { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  .account-item .meta { font-size: 11px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .dot.v2 { background: var(--green); }
+  .dot.v1 { background: var(--yellow); }
+
+  /* ── Metrics strip ── */
+  .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
+  .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .metric-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .metric-card .value { font-size: 28px; font-weight: 700; color: var(--accent2); }
+  .metric-card .sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  /* ── Tabs ── */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+  .tab { padding: 8px 18px; cursor: pointer; color: var(--muted); font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .15s; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── Cards ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+  .card-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 14px; }
+  .kv-grid { display: grid; grid-template-columns: 170px 1fr; gap: 6px 16px; }
+  .kv-label { color: var(--muted); font-size: 12px; }
+  .kv-value { font-size: 12px; color: var(--text); word-break: break-word; }
+
+  /* ── Diff viewer ── */
+  .diff-header { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+  .diff-col-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; background: var(--surface2); border-radius: 6px; text-align: center; }
+  .diff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; border-radius: 6px; overflow: hidden; }
+  .diff-cell { padding: 10px 14px; font-size: 12px; font-family: 'Consolas', monospace; line-height: 1.6; white-space: pre-wrap; word-break: break-word; border-radius: 6px; border: 1px solid transparent; }
+  .diff-cell.unchanged { background: var(--surface2); color: var(--muted); border-color: var(--border); }
+  .diff-cell.added { background: var(--added-bg); color: #86efac; border-color: var(--added); }
+  .diff-cell.updated { background: var(--updated-bg); color: #93c5fd; border-color: #1e40af; }
+  .diff-cell.removed { background: var(--removed-bg); color: #fca5a5; border-color: var(--removed); }
+  .diff-field-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .change-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 12px; margin-left: 6px; text-transform: uppercase; }
+  .change-badge.added { background: #166534; color: #86efac; }
+  .change-badge.updated { background: #1e3a5f; color: #93c5fd; }
+  .change-badge.appended { background: #3b2f00; color: #ffd76d; }
+  .reason-text { font-size: 11px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
+  /* ── Prompt viewer ── */
+  .prompt-box { background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.7; white-space: pre-wrap; color: #c9d1d9; max-height: 520px; overflow-y: auto; }
+  .prompt-section { color: #79c0ff; font-weight: bold; }
+
+  /* ── Tags ── */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text); }
+
+  /* ── Empty / loading ── */
+  .empty { text-align: center; padding: 60px; color: var(--muted); }
+  .empty h3 { font-size: 16px; margin-bottom: 8px; }
+  .loader { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+  .error-banner { background: #3b0a0a; border: 1px solid var(--red); border-radius: 8px; padding: 14px 18px; color: #fca5a5; margin-bottom: 16px; font-size: 13px; }
+
+  /* ── Unknown flags ── */
+  .unknown-item { background: #2a1f00; border: 1px solid #7c5e00; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: var(--yellow); margin-bottom: 6px; display: flex; gap: 8px; align-items: flex-start; }
+  .unknown-item::before { content: '⚠'; flex-shrink: 0; }
+
+  /* ── Contacts table ── */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: var(--surface2); color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── Version pill ── */
+  .version-pill { display: inline-flex; gap: 4px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--accent2); }
+
+  /* ── Overview ── */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .overview-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; cursor: pointer; transition: border-color .15s; }
+  .overview-card:hover { border-color: var(--accent); }
+  .overview-card .company { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .overview-card .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .overview-card .stat { font-size: 11px; color: var(--muted); }
+  .overview-card .stat span { color: var(--text); font-weight: 600; }
+  .pipeline-status { display: flex; gap: 6px; margin-top: 10px; }
+  .status-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; }
+  .status-pill.v1 { background: #3b2f00; color: var(--yellow); }
+  .status-pill.v2 { background: #052e16; color: var(--green); }
+
+  .hidden { display: none !important; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🤖 Clara Answers</h1>
+  <span>Pipeline Dashboard</span>
+  <div id="runBadge" class="badge">Loading...</div>
+  <div style="margin-left:auto; font-size:12px; color:var(--muted)" id="runTime"></div>
+</div>
+
+<div class="main">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-title">Accounts</div>
+    <div id="accountList"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="content" id="content">
+    <div class="loader">Loading pipeline data...</div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA LOADING
+// ============================================================
+let allData = {};       // { account_id: { v1_memo, v2_memo, changelog, agent_v1, agent_v2 } }
+let runSummary = null;
+let activeAccount = null;
+let activeTab = 'overview';
+
+// The dashboard reads JSON files served by serve_dashboard.py
+// All paths are relative to the project root.
+const BASE = '';
+
+async function fetchJSON(path) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+async function loadAll() {
+  runSummary = await fetchJSON(`${BASE}/outputs/run_summary.json`);
+  if (!runSummary) {
+    document.getElementById('content').innerHTML = `
+      <div class="error-banner">
+        <strong>Could not load run_summary.json.</strong><br>
+        Make sure you're serving from the project root:<br>
+        <code>python scripts/serve_dashboard.py</code>
+      </div>`;
+    return;
+  }
+
+  document.getElementById('runTime').textContent = `Last run: ${new Date(runSummary.run_timestamp).toLocaleString()}`;
+  const total = runSummary.totals?.accounts_in_system || runSummary.total_accounts_in_system || 0;
+  document.getElementById('runBadge').textContent = `${total} accounts`;
+
+  const ids = runSummary.pipeline_a?.account_ids || [];
+  const b_ids = new Set(runSummary.pipeline_b?.account_ids || []);
+
+  // Load per-account data in parallel
+  await Promise.all(ids.map(async id => {
+    const [v1, v2, cl, a1, a2] = await Promise.all([
+      fetchJSON(`${BASE}/outputs/accounts/${id}/v1/account_memo_v1.json`),
+      fetchJSON(`${BASE}/outputs/accounts/${id}/v2/account_memo_v2.json`),
+      fetchJSON(`${BASE}/outputs/accounts/${id}/v2/changes.json`),
+      fetchJSON(`${BASE}/outputs/accounts/${id}/v1/agent_spec_v1.json`),
+      fetchJSON(`${BASE}/outputs/accounts/${id}/v2/agent_spec_v2.json`),
+    ]);
+    allData[id] = { v1, v2, changelog: cl, agent_v1: a1, agent_v2: a2, hasV2: b_ids.has(id) };
+  }));
+
+  renderSidebar(ids, b_ids);
+  renderOverview();
+}
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+function renderSidebar(ids, b_ids) {
+  const el = document.getElementById('accountList');
+  el.innerHTML = ids.map(id => {
+    const d = allData[id];
+    const name = d?.v1?.company_name || id;
+    const hasV2 = b_ids.has(id);
+    return `
+      <div class="account-item ${activeAccount === id ? 'active' : ''}" onclick="selectAccount('${id}')">
+        <div class="name">${name}</div>
+        <div class="meta">
+          <span class="dot v1"></span>v1
+          ${hasV2 ? '<span class="dot v2"></span>v2' : ''}
+          ${d?.changelog ? `· ${d.changelog.total_changes} changes` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function selectAccount(id) {
+  activeAccount = id;
+  activeTab = 'overview';
+  // Update sidebar
+  document.querySelectorAll('.account-item').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  renderAccountView(id);
+}
+
+// ============================================================
+// OVERVIEW (home screen)
+// ============================================================
+function renderOverview() {
+  const summary = runSummary || {};
+  const pa = summary.pipeline_a || {};
+  const pb = summary.pipeline_b || {};
+  const tot = summary.totals || {};
+
+  const metrics = [
+    { label: 'Accounts', value: tot.accounts_in_system || pa.accounts_processed || 0, sub: 'total in system' },
+    { label: 'Fully Onboarded', value: tot.fully_onboarded ?? pb.accounts_updated ?? 0, sub: 'v1 + v2 complete' },
+    { label: 'Changes Applied', value: pb.total_changes_applied ?? '—', sub: 'across all accounts' },
+    { label: 'Unknowns Resolved', value: pb.total_unknowns_resolved ?? '—', sub: 'by onboarding' },
+    { label: 'Success Rate', value: (tot.pipeline_success_rate_pct ?? 100) + '%', sub: 'pipeline A' },
+  ];
+
+  const metricHTML = metrics.map(m => `
+    <div class="metric-card">
+      <div class="label">${m.label}</div>
+      <div class="value">${m.value}</div>
+      <div class="sub">${m.sub}</div>
+    </div>`).join('');
+
+  const cards = Object.entries(allData).map(([id, d]) => {
+    const v1 = d?.v1;
+    const cl = d?.changelog;
+    return `
+      <div class="overview-card" onclick="selectAccount('${id}')">
+        <div class="company">${v1?.company_name || id}</div>
+        <div class="stats">
+          <div class="stat">Services <span>${v1?.services_supported?.length || 0}</span></div>
+          <div class="stat">Contacts <span>${v1?.emergency_routing_rules?.contacts?.length || 0}</span></div>
+          <div class="stat">Triggers <span>${v1?.emergency_definition?.length || 0}</span></div>
+          <div class="stat">Changes <span>${cl?.total_changes || '—'}</span></div>
+        </div>
+        <div class="pipeline-status">
+          <span class="status-pill v1">v1 ✓</span>
+          ${d?.hasV2 ? '<span class="status-pill v2">v2 ✓</span>' : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="metrics">${metricHTML}</div>
+    <div class="card">
+      <div class="card-title">All Accounts</div>
+      <div class="overview-grid">${cards}</div>
+    </div>`;
+}
+
+// ============================================================
+// ACCOUNT VIEW
+// ============================================================
+function renderAccountView(id) {
+  const d = allData[id];
+  const v1 = d?.v1;
+  const v2 = d?.v2;
+  const cl = d?.changelog;
+
+  const tabs = [
+    { id: 'memo', label: '📋 Account Memo' },
+    { id: 'diff', label: `🔀 Diff Viewer${cl ? ` (${cl.total_changes})` : ''}` },
+    { id: 'prompt', label: '🤖 Agent Prompt' },
+    { id: 'contacts', label: '📞 Routing' },
+    { id: 'raw', label: '{ } JSON' },
+  ];
+
+  const tabsHTML = tabs.map(t => `
+    <div class="tab ${activeTab === t.id ? 'active' : ''}" onclick="switchTab('${id}', '${t.id}')">${t.label}</div>
+  `).join('');
+
+  const version = d?.hasV2
+    ? `<span class="version-pill">v1 → v2</span>`
+    : `<span class="version-pill" style="color:var(--yellow)">v1 only</span>`;
+
+  let bodyHTML = '';
+  if (activeTab === 'memo') bodyHTML = renderMemoTab(v1, v2);
+  else if (activeTab === 'diff') bodyHTML = renderDiffTab(cl, v1, v2);
+  else if (activeTab === 'prompt') bodyHTML = renderPromptTab(d);
+  else if (activeTab === 'contacts') bodyHTML = renderContactsTab(v1, v2);
+  else if (activeTab === 'raw') bodyHTML = renderRawTab(d);
+
+  document.getElementById('content').innerHTML = `
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+      <div>
+        <div style="font-size:20px; font-weight:700">${v1?.company_name || id}</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">${id}</div>
+      </div>
+      ${version}
+    </div>
+    <div class="tabs">${tabsHTML}</div>
+    ${bodyHTML}`;
+}
+
+function switchTab(id, tab) {
+  activeTab = tab;
+  renderAccountView(id);
+}
+
+// ── Memo Tab ──
+function renderMemoTab(v1, v2) {
+  if (!v1) return '<div class="empty"><h3>No v1 data found</h3></div>';
+  const show = v2 || v1;
+  const bh = show.business_hours || {};
+  const er = show.emergency_routing_rules || {};
+  const ner = show.non_emergency_routing_rules || {};
+
+  const unknowns = show.questions_or_unknowns || [];
+  const unknownsHTML = unknowns.length
+    ? unknowns.map(u => `<div class="unknown-item">${u}</div>`).join('')
+    : `<div style="color:var(--green); font-size:12px">✅ All critical fields resolved</div>`;
+
+  const services = (show.services_supported || []);
+  const triggers = (show.emergency_definition || []);
+  const constraints = (show.integration_constraints || []);
+
+  return `
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="card">
+        <div class="card-title">Business Hours</div>
+        <div class="kv-grid">
+          <span class="kv-label">Days</span><span class="kv-value">${(bh.days||[]).join(', ') || '—'}</span>
+          <span class="kv-label">Hours</span><span class="kv-value">${bh.start||'—'} → ${bh.end||'—'}</span>
+          <span class="kv-label">Timezone</span><span class="kv-value">${bh.timezone||'—'}</span>
+          ${bh.saturday_hours ? `<span class="kv-label">Saturday</span><span class="kv-value">${bh.saturday_hours.start} – ${bh.saturday_hours.end}</span>` : ''}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Company Info</div>
+        <div class="kv-grid">
+          <span class="kv-label">Company</span><span class="kv-value">${show.company_name||'—'}</span>
+          <span class="kv-label">Address</span><span class="kv-value">${show.office_address||'—'}</span>
+          <span class="kv-label">Version</span><span class="kv-value">${show.version||'—'}</span>
+          <span class="kv-label">Source</span><span class="kv-value">${show.source||'—'}</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+      <div class="card">
+        <div class="card-title">Services Supported (${services.length})</div>
+        <div class="tag-list">${services.map(s => `<span class="tag">${s}</span>`).join('')||'—'}</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Emergency Triggers (${triggers.length})</div>
+        <div class="tag-list">${triggers.map(s => `<span class="tag" style="border-color:#7c1d1d;color:#fca5a5">${s}</span>`).join('')||'—'}</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Integration Constraints</div>
+        <div>${constraints.length ? constraints.map(c => `<div style="font-size:12px;color:var(--yellow);margin-bottom:6px">⚠ ${c}</div>`).join('') : '<span style="color:var(--muted);font-size:12px">None recorded</span>'}</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Questions / Unknowns</div>
+      ${unknownsHTML}
+    </div>`;
+}
+
+// ── Diff Tab ──
+function renderDiffTab(cl, v1, v2) {
+  if (!cl) {
+    return `<div class="card"><div class="empty"><h3>No onboarding data yet</h3><p style="margin-top:8px;color:var(--muted)">Run Pipeline B to generate a diff</p></div></div>`;
+  }
+
+  const resolved = cl.resolved_unknowns || [];
+  const remaining = cl.remaining_unknowns || [];
+
+  const resolvedHTML = resolved.length
+    ? resolved.map(r => `<div style="color:var(--green);font-size:12px;margin-bottom:4px">✅ ${r}</div>`).join('')
+    : '<span style="color:var(--muted);font-size:12px">—</span>';
+
+  const remainingHTML = remaining.length
+    ? remaining.map(r => `<div class="unknown-item">${r}</div>`).join('')
+    : '<div style="color:var(--green);font-size:12px">✅ All unknowns resolved</div>';
+
+  const changesHTML = cl.changes.map(ch => {
+    const badgeClass = ch.action;
+    const oldVal = ch.old_value !== undefined ? JSON.stringify(ch.old_value, null, 2) : null;
+    const newVal = ch.new_value !== undefined
+      ? JSON.stringify(ch.new_value, null, 2)
+      : JSON.stringify(ch.value, null, 2);
+
+    const leftCell = oldVal !== null
+      ? `<div class="diff-cell ${ch.action === 'added' ? 'unchanged' : 'removed'}">${escHtml(oldVal)}</div>`
+      : `<div class="diff-cell unchanged" style="opacity:.4">—</div>`;
+
+    const rightCell = `<div class="diff-cell ${ch.action === 'updated' ? 'updated' : 'added'}">${escHtml(newVal)}</div>`;
+
+    return `
+      <div style="margin-bottom:16px">
+        <div class="diff-field-label">
+          ${escHtml(ch.field)}
+          <span class="change-badge ${badgeClass}">${ch.action}</span>
+        </div>
+        <div class="diff-row">${leftCell}${rightCell}</div>
+        <div class="reason-text">↳ ${escHtml(ch.reason || '')}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div class="card">
+        <div class="card-title" style="color:var(--green)">✅ Resolved Unknowns (${resolved.length})</div>
+        ${resolvedHTML}
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--yellow)">⚠ Remaining Unknowns (${remaining.length})</div>
+        ${remainingHTML}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Field-by-Field Changes (${cl.total_changes})</div>
+      <div class="diff-header">
+        <div class="diff-col-title">← v1 (Demo)</div>
+        <div class="diff-col-title">v2 (Onboarding) →</div>
+      </div>
+      ${changesHTML}
+    </div>`;
+}
+
+// ── Prompt Tab ──
+function renderPromptTab(d) {
+  const v = d?.hasV2 ? 'v2' : 'v1';
+  const spec = v === 'v2' ? d?.agent_v2 : d?.agent_v1;
+  if (!spec) return '<div class="empty"><h3>No agent spec found</h3></div>';
+
+  const prompt = spec.system_prompt || '';
+  const colored = escHtml(prompt)
+    .replace(/(={5,}[\s\S]*?={5,})/g, '<span class="prompt-section">$1</span>')
+    .replace(/(Step \d+[E|N]? [—–].+)/g, '<span style="color:#ffd76d">$1</span>');
+
+  const selector = d?.hasV2 ? `
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <button onclick="setPromptVersion('${d?.v1?.account_id}','v1')" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px">v1 Prompt</button>
+      <button onclick="setPromptVersion('${d?.v1?.account_id}','v2')" style="background:var(--accent);border:none;color:#fff;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px">v2 Prompt ✓</button>
+    </div>` : '';
+
+  return `
+    ${selector}
+    <div class="card" style="padding:0">
+      <div class="prompt-box">${colored}</div>
+    </div>`;
+}
+
+function setPromptVersion(id, ver) {
+  const d = allData[id];
+  const spec = ver === 'v2' ? d?.agent_v2 : d?.agent_v1;
+  if (!spec) return;
+  const prompt = spec.system_prompt || '';
+  const colored = escHtml(prompt)
+    .replace(/(={5,}[\s\S]*?={5,})/g, '<span class="prompt-section">$1</span>')
+    .replace(/(Step \d+[E|N]? [—–].+)/g, '<span style="color:#ffd76d">$1</span>');
+  document.querySelector('.prompt-box').innerHTML = colored;
+}
+
+// ── Contacts / Routing Tab ──
+function renderContactsTab(v1, v2) {
+  const show = v2 || v1;
+  if (!show) return '<div class="empty"><h3>No data</h3></div>';
+  const er = show.emergency_routing_rules || {};
+  const ner = show.non_emergency_routing_rules || {};
+  const ctr = show.call_transfer_rules || {};
+  const contacts = er.contacts || [];
+
+  const contactRows = contacts.map((c, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td style="font-weight:600">${c.name || '—'}</td>
+      <td><code style="background:var(--surface2);padding:2px 6px;border-radius:4px">${c.phone || '—'}</code></td>
+      <td>${c.role || '—'}</td>
+    </tr>`).join('') || '<tr><td colspan="4" style="color:var(--muted)">No contacts extracted</td></tr>';
+
+  return `
+    <div class="card">
+      <div class="card-title">Emergency Contact Order</div>
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Role</th></tr></thead>
+        <tbody>${contactRows}</tbody>
+      </table>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="card">
+        <div class="card-title">Transfer Rules</div>
+        <div class="kv-grid">
+          <span class="kv-label">Timeout</span><span class="kv-value">${er.transfer_timeout_seconds || ctr.timeout_seconds || '—'}s</span>
+          <span class="kv-label">Retries</span><span class="kv-value">${ctr.retry_count ?? 1}</span>
+          <span class="kv-label">Fallback</span><span class="kv-value">${ctr.fallback_action || '—'}</span>
+        </div>
+        ${er.fallback_if_no_answer ? `<div style="margin-top:12px;padding:10px;background:var(--surface2);border-radius:6px;font-size:12px;color:var(--yellow)">"${er.fallback_if_no_answer}"</div>` : ''}
+      </div>
+      <div class="card">
+        <div class="card-title">Non-Emergency (After Hours)</div>
+        <div class="kv-grid">
+          <span class="kv-label">Collect</span><span class="kv-value">${(ner.collect_fields||[]).join(', ')||'—'}</span>
+          <span class="kv-label">Follow-up</span><span class="kv-value">${ner.follow_up_timing||'—'}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── Raw JSON Tab ──
+function renderRawTab(d) {
+  const items = [
+    { label: 'Account Memo v1', data: d?.v1 },
+    { label: 'Account Memo v2', data: d?.v2 },
+    { label: 'Agent Spec v1', data: d?.agent_v1 },
+    { label: 'Agent Spec v2', data: d?.agent_v2 },
+    { label: 'Changelog', data: d?.changelog },
+  ].filter(i => i.data);
+
+  return items.map(item => `
+    <div class="card">
+      <div class="card-title">${item.label}</div>
+      <div class="prompt-box" style="max-height:300px">${escHtml(JSON.stringify(item.data, null, 2))}</div>
+    </div>`).join('');
+}
+
+// ── Utilities ──
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+// ── Boot ──
+loadAll();
+</script>
+</body>
+</html>

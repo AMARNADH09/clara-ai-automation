@@ -1,0 +1,39 @@
+DEMO CALL TRANSCRIPT - Account 005
+Company: Guardian Alarm & Security
+Date: 2024-01-19
+
+Sales Rep: Thanks for joining. Tell me about Guardian.
+
+Client: We install and monitor fire and burglar alarm systems. Primarily commercial clients. We're out of Atlanta, Georgia.
+
+Sales Rep: What are your office hours?
+
+Client: Monday through Friday, 8 AM to 5 PM Eastern. We do have someone on call after hours for alarm emergencies.
+
+Sales Rep: What counts as an emergency?
+
+Client: Any active fire alarm signal, a break-in alarm triggering during off hours, or a panic button activation. Also any system that goes completely offline at a client site.
+
+Sales Rep: Emergency routing?
+
+Client: We have a 24/7 monitoring center that handles the alarm signals directly. For inbound calls from customers, route to our after-hours rep, Janet, at 404-555-0133.
+
+Sales Rep: If Janet doesn't answer?
+
+Client: Route to our operations manager, Thomas, at 404-555-0156. If still no answer, collect info and tell them we'll respond within 15 minutes.
+
+Sales Rep: Non-emergency after hours?
+
+Client: Take a message. Name, number, and what they're calling about. We follow up next business day.
+
+Sales Rep: Software?
+
+Client: We use our own proprietary monitoring software. No ServiceTrade. Do not attempt to create any tickets or jobs. We handle all of that in-house.
+
+Sales Rep: Address?
+
+Client: 550 Peachtree Street NE, Atlanta, GA 30308.
+
+Sales Rep: Any other requirements?
+
+Client: Just make sure Clara sounds professional. Our clients are businesses, not homeowners.

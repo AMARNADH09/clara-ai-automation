@@ -1,0 +1,35 @@
+ONBOARDING CALL TRANSCRIPT - Account 004
+Company: Summit HVAC & Mechanical
+Date: 2024-02-04
+
+Onboarding Rep: Let's confirm Summit's configuration. Monday through Friday, 8 AM to 5 PM Mountain. Correct?
+
+Client: Correct.
+
+Onboarding Rep: Emergency routing — dispatch center at 303-555-0177, 30-second timeout, then on-call tech. You said you'd confirm that number in onboarding?
+
+Client: Yes. On-call tech number is 303-555-0144. After that, route to our service manager, Greg, at 303-555-0199.
+
+Onboarding Rep: And if all fail?
+
+Client: Collect info and say someone will call back within 30 minutes. Our team is spread out so 30 minutes is realistic.
+
+Onboarding Rep: Any additions to emergency definitions?
+
+Client: Add: frozen pipe burst in a commercial building. We get those in winter. Also add: boiler failure.
+
+Onboarding Rep: Got it. ServiceTrade — okay to create HVAC jobs, not plumbing. Any changes?
+
+Client: No changes. That's still correct.
+
+Onboarding Rep: Address — 2200 Blake Street, Denver, CO 80205. Confirmed?
+
+Client: Confirmed.
+
+Onboarding Rep: Non-emergency after hours — any changes?
+
+Client: No. Same policy.
+
+Onboarding Rep: Anything else?
+
+Client: We want Clara to mention our 24/7 availability when greeting callers during business hours too. It reassures clients.

@@ -1,0 +1,39 @@
+ONBOARDING CALL TRANSCRIPT - Account 001
+Company: Apex Fire Protection Inc.
+Date: 2024-02-01
+
+Onboarding Rep: Welcome to onboarding, let's confirm all the details for your Clara configuration.
+
+Client: Sounds good.
+
+Onboarding Rep: First, business hours — Monday through Friday, 7 AM to 5 PM Central. Is that still correct?
+
+Client: Correct. And we want to add Saturday 8 AM to noon as well. We started doing Saturday morning inspections.
+
+Onboarding Rep: Great. I'll add Saturday 8 AM to 12 PM Central. Emergency definition — sprinkler activation, fire alarm trigger, system failure causing life safety risk. Still accurate?
+
+Client: Yes. Also add: carbon monoxide detector alarm. We handle those too.
+
+Onboarding Rep: Added. Now, emergency routing. Mike at 214-555-0192 first, then Sarah at 214-555-0210. Is that still the order?
+
+Client: Yes, but we want a 45-second timeout before escalating, not whatever the default is.
+
+Onboarding Rep: Got it. 45-second timeout. Fallback if both fail is collect info and tell caller someone calls back within 15 minutes. Still correct?
+
+Client: Yes.
+
+Onboarding Rep: ServiceTrade integration — don't create sprinkler jobs automatically. Any additions?
+
+Client: Also don't auto-create inspection jobs. Only HVAC and extinguisher jobs can be created automatically if you build that feature out.
+
+Onboarding Rep: Noted. Transfer fail message — what exactly should Clara say?
+
+Client: Something like: "I wasn't able to reach our team directly, but this is our highest priority. Someone from Apex will call you back within 15 minutes. Please stay near your phone."
+
+Onboarding Rep: Perfect. Address on file is Dallas, Texas — do you want to give a full address?
+
+Client: Yes. 1800 Commerce Street, Dallas, TX 75201.
+
+Onboarding Rep: Anything else?
+
+Client: Clara should always confirm the caller's location early in any emergency call. We need to know the site address before we dispatch.
